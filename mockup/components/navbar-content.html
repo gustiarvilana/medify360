@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand fw-bold ms-2" href="index.html">Stitch 360</a>
+    
+    <div class="collapse navbar-collapse d-none d-lg-block">
+        <div class="position-relative ms-auto me-3">
+            <input class="form-control" type="search" id="search-input" placeholder="Cari karyawan..." aria-label="Search" autocomplete="off">
+            <div id="search-results" class="dropdown-menu w-100 shadow mt-1 p-0"></div>
+        </div>
+    </div>
+    
+    <div class="dropdown me-2">
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown">
+            <img src="https://ui-avatars.com/api/?name=Budi+Santoso&background=random" width="32" height="32" class="rounded-circle me-2">
+            <span class="d-none d-sm-inline">Budi Santoso</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark shadow">
+            <li><a class="dropdown-item" href="pengaturan.html">Profil</a></li>
+            <li><a class="dropdown-item" href="pengaturan.html">Pengaturan</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="login.html">Keluar</a></li>
+        </ul>
+    </div>
+</div>
+
+<style>
+    #search-results { display: none; }
+    #search-results.show { display: block; }
+</style>

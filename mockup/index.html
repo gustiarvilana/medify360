@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stitch 360 - Dashboard Budaya & Performa</title>
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f0f2f5; color: #1a1d23; }
+        
+        @media (min-width: 992px) {
+            .sidebar { position: fixed; top: 56px; bottom: 0; left: 0; z-index: 1000; padding: 0; width: 240px; background-color: #fff; border-right: 1px solid #e0e4e9; height: calc(100vh - 56px); overflow-y: auto; }
+            .main-content { margin-left: 240px; padding: 30px; }
+        }
+
+        /* Card Enhancements */
+        .stat-card { 
+            border: none; 
+            border-radius: 16px; 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #ffffff;
+        }
+        .stat-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 12px 24px rgba(0,0,0,0.08) !important;
+        }
+
+        /* Icon Wrapper Styles */
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+        .stat-card:hover .icon-box {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        /* Feed Styles */
+        .feed-card { 
+            border: none; 
+            border-radius: 16px; 
+            background: #fff;
+            transition: background 0.2s;
+        }
+        .feed-card:hover { background: #fafbfc; }
+        .avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+
+        /* Button Polish */
+        .btn-action {
+            padding: 10px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        .btn-cendol { background-color: #198754; color: white; border: none; }
+        .btn-cendol:hover { background-color: #146c35; transform: scale(1.02); box-shadow: 0 4px 15px rgba(25, 135, 84, 0.3); }
+        
+        .btn-bata { background-color: #dc3545; color: white; border: none; }
+        .btn-bata:hover { background-color: #bb2d3b; transform: scale(1.02); box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3); }
+
+        /* Progress Bar Custom */
+        .progress { height: 8px; border-radius: 10px; background-color: #e9ecef; }
+        .modal-header-cendol { background-color: #198754; color: white; }
+        .modal-header-bata { background-color: #dc3545; color: white; }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar Placeholder -->
+    <nav id="navbar-placeholder" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top"></nav>
+
+    <!-- Sidebar Placeholder (Desktop) -->
+    <div id="sidebar-placeholder" class="sidebar d-none d-lg-block"></div>
+
+    <!-- Mobile Sidebar (Offcanvas) -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar">
+        <div class="offcanvas-header bg-dark text-white">
+            <h5 class="offcanvas-title fw-bold">Stitch 360</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div id="mobile-sidebar-placeholder" class="offcanvas-body p-0"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container-fluid">
+            <!-- Header -->
+            <div class="d-md-flex justify-content-between align-items-center mb-5">
+                <div>
+                    <h2 class="fw-bold mb-1">Halo, Budi Santoso 👋</h2>
+                    <p class="text-muted mb-0">Mari tingkatkan budaya kerja kita hari ini.</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Kolom Utama: Stats & Feed -->
+                <div class="col-lg-8">
+                    <!-- Stats Grid -->
+                    <div class="row g-3 mb-5">
+                        <div class="col-sm-6 col-lg-3"><div class="card stat-card p-3 shadow-sm border-0"><h6 class="text-muted small">Cendol Diterima</h6><h3 class="fw-bold text-success">24</h3><small class="text-success">+3 hari ini</small></div></div>
+                        <div class="col-sm-6 col-lg-3"><div class="card stat-card p-3 shadow-sm border-0"><h6 class="text-muted small">Cendol Diberikan</h6><h3 class="fw-bold text-info">12</h3><div class="progress mt-1" style="height:4px"><div class="progress-bar bg-info" style="width:60%"></div></div></div></div>
+                        <div class="col-sm-6 col-lg-3"><div class="card stat-card p-3 shadow-sm border-0"><h6 class="text-muted small">Laporan Bata</h6><h3 class="fw-bold text-danger">1</h3><small class="text-warning">Dalam Peninjauan</small></div></div>
+                        <div class="col-sm-6 col-lg-3"><div class="card stat-card p-3 shadow-sm border-0"><h6 class="text-muted small">Skor Budaya</h6><h3 class="fw-bold text-primary">92%</h3><small class="text-muted">Target: 95%</small></div></div>
+                    </div>
+
+                    <!-- Feed Budaya -->
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="fw-bold mb-0">Aktivitas Terbaru</h5>
+                        <a href="riwayat.html" class="btn btn-sm btn-outline-primary">Lihat Semua</a>
+                    </div>
+                    <div class="card border-0 shadow-sm rounded-4 p-4 mb-3">
+                        <div class="d-flex align-items-center">
+                            <img src="https://ui-avatars.com/api/?name=Ani+Wijaya" class="rounded-circle me-3" width="45">
+                            <div class="flex-grow-1">
+                                <p class="mb-0 fw-bold">Ani Wijaya <span class="text-muted fw-normal">memberi Cendol ke</span> Rian</p>
+                                <small class="text-muted">"Terima kasih atas bantuan codingnya!"</small>
+                            </div>
+                            <div class="text-center">
+                                <span class="material-symbols-outlined text-success">volunteer_activism</span>
+                                <div class="small fw-bold">1</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kolom Samping -->
+                <div class="col-lg-4">
+                    <!-- Target Budaya -->
+                    <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+                        <h5 class="fw-bold mb-3">🎯 Target Budaya</h5>
+                        <p class="small text-muted">Kumpulkan 20 Cendol untuk mencapai level "Culture Champion".</p>
+                        <div class="progress mb-2" style="height: 10px;">
+                            <div class="progress-bar bg-success" style="width: 75%"></div>
+                        </div>
+                        <small class="text-muted">15/20 Cendol terkumpul</small>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="d-grid gap-2 mb-4">
+                        <button class="btn btn-cendol py-3" data-bs-toggle="modal" data-bs-target="#modalCendol">Kirim Apresiasi Baru</button>
+                        <button class="btn btn-bata py-3" data-bs-toggle="modal" data-bs-target="#modalBata">Laporkan Insiden</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Cendol -->
+    <div class="modal fade" id="modalCendol" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0">
+                <div class="modal-header modal-header-cendol">
+                    <h5 class="modal-title fw-bold">Kirim Cendol (Apresiasi)</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="formCendol">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold small">Pilih Rekan Kerja</label>
+                            <select class="form-select" required>
+                                <option value="">Cari nama...</option>
+                                <option>Ani Wijaya</option>
+                                <option>Rian Putra</option>
+                                <option>Siska Putri</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold small">Pesan Apresiasi</label>
+                            <textarea class="form-control" rows="3" placeholder="Tuliskan alasan apresiasi..." required></textarea>
+                        </div>
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-cendol py-2 fw-bold">Kirim Sekarang</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Bata -->
+    <div class="modal fade" id="modalBata" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0">
+                <div class="modal-header modal-header-bata">
+                    <h5 class="modal-title fw-bold">Laporkan Bata (Insiden)</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="formBata">
+                        <div class="mb-3">
+                            <label class="form-label fw-bold small">Jenis Pelanggaran</label>
+                            <select class="form-select" required>
+                                <option value="">Pilih jenis...</option>
+                                <option>Ketidakhadiran</option>
+                                <option>Ketidakjujuran</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold small">Deskripsi</label>
+                            <textarea class="form-control" rows="4" placeholder="Detail kejadian..." required></textarea>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-bata py-2 fw-bold">Kirim Laporan</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Bootstrap Tooltips
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+        });
+    </script>
+</body>
+</html>

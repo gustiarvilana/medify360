@@ -1,0 +1,73 @@
+<div class="p-3">
+    <div class="mb-4">
+        <small class="text-uppercase fw-bold text-muted small-ls">Utama</small>
+        <nav class="nav flex-column mt-2">
+            <a class="nav-link" data-page="index" href="index.html">
+                <span class="material-symbols-outlined">dashboard</span> Beranda
+            </a>
+        </nav>
+    </div>
+
+    <div class="mb-4">
+        <small class="text-uppercase fw-bold text-muted small-ls">Aktivitas & Budaya</small>
+        <nav class="nav flex-column mt-2">
+            <a class="nav-link" data-page="riwayat" href="riwayat.html">
+                <span class="material-symbols-outlined">history</span> Riwayat Budaya
+            </a>
+            <a class="nav-link" data-page="leaderboard" href="leaderboard.html">
+                <span class="material-symbols-outlined">leaderboard</span> Leaderboard
+            </a>
+            <a class="nav-link" data-page="analisis-performa" href="analisis-performa.html">
+                <span class="material-symbols-outlined">analytics</span> Analisis Performa
+            </a>
+        </nav>
+    </div>
+
+    <div class="mb-4">
+        <small class="text-uppercase fw-bold text-muted small-ls">Laporan</small>
+        <nav class="nav flex-column mt-2">
+            <a class="nav-link" data-page="laporan" href="laporan.html">
+                <span class="material-symbols-outlined">report</span> Laporan Saya
+            </a>
+        </nav>
+    </div>
+
+    <div class="mb-4">
+        <small class="text-uppercase fw-bold text-muted small-ls">Administrasi</small>
+        <nav class="nav flex-column mt-2">
+            <a class="nav-link" data-page="manajemen-user" href="manajemen-user.html">
+                <span class="material-symbols-outlined">group</span> Manajemen User
+            </a>
+        </nav>
+    </div>
+
+    <div class="mb-4">
+        <small class="text-uppercase fw-bold text-muted small-ls">Sistem</small>
+        <nav class="nav flex-column mt-2">
+            <a class="nav-link" data-page="pengaturan" href="pengaturan.html">
+                <span class="material-symbols-outlined">settings</span> Pengaturan
+            </a>
+            <a class="nav-link text-danger" href="login.html">
+                <span class="material-symbols-outlined">logout</span> Keluar
+            </a>
+        </nav>
+    </div>
+</div>
+
+<style>
+    .small-ls { letter-spacing: 0.5px; font-size: 0.7rem; }
+    .nav-link { 
+        color: #444; 
+        display: flex; 
+        align-items: center; 
+        gap: 12px; 
+        padding: 8px 12px;
+        border-radius: 8px;
+        margin-bottom: 2px;
+        transition: all 0.2s;
+        text-decoration: none;
+    }
+    .nav-link:hover { background-color: #f0f2f5; color: #0d6efd; }
+    .nav-link.active { background-color: #e7f0ff; color: #0d6efd; fw-bold; }
+    .nav-link span { font-size: 20px; }
+</style>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat Budaya - Stitch 360</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f0f2f5; }
+        @media (min-width: 992px) {
+            .sidebar { position: fixed; top: 56px; bottom: 0; left: 0; z-index: 1000; padding: 0; width: 240px; background-color: #fff; border-right: 1px solid #e0e4e9; height: calc(100vh - 56px); overflow-y: auto; }
+            .main-content { margin-left: 240px; padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar-placeholder" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top"></nav>
+    <div id="sidebar-placeholder" class="sidebar d-none d-lg-block"></div>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar">
+        <div class="offcanvas-header bg-dark text-white"><h5 class="offcanvas-title fw-bold">Stitch 360</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button></div>
+        <div id="mobile-sidebar-placeholder" class="offcanvas-body p-0"></div>
+    </div>
+
+    <main class="main-content">
+        <div class="container-fluid">
+            <!-- Header & Filter -->
+            <div class="d-md-flex justify-content-between align-items-center mb-4">
+                <h2 class="fw-bold mb-0">Riwayat Budaya</h2>
+                <div class="d-flex gap-2">
+                    <select class="form-select border-0 shadow-sm"><option>Semua Tipe</option><option>Cendol</option><option>Bata</option></select>
+                    <button class="btn btn-primary shadow-sm"><span class="material-symbols-outlined align-middle">download</span> Ekspor</button>
+                </div>
+            </div>
+
+            <!-- Ringkasan Singkat -->
+            <div class="row g-3 mb-4">
+                <div class="col-md-4"><div class="card p-3 border-0 shadow-sm"><h6 class="text-muted small">Total Interaksi</h6><h4 class="fw-bold">42</h4></div></div>
+                <div class="col-md-4"><div class="card p-3 border-0 shadow-sm"><h6 class="text-muted small">Apresiasi Diberikan</h6><h4 class="fw-bold text-success">35</h4></div></div>
+                <div class="col-md-4"><div class="card p-3 border-0 shadow-sm"><h6 class="text-muted small">Laporan Dibuat</h6><h4 class="fw-bold text-danger">7</h4></div></div>
+            </div>
+
+            <!-- Tabel Riwayat -->
+            <div class="card shadow-sm border-0 rounded-4">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light text-muted small">
+                            <tr>
+                                <th class="ps-4">Tanggal</th>
+                                <th>Aksi</th>
+                                <th>Subjek/Penerima</th>
+                                <th>Kategori</th>
+                                <th>Pesan/Deskripsi</th>
+                                <th class="text-end pe-4">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="ps-4 small">28 Mei 2026, 14:20</td>
+                                <td><span class="badge bg-success-subtle text-success rounded-pill">Cendol</span></td>
+                                <td><div class="fw-bold">Ani Wijaya</div><small class="text-muted">TI</small></td>
+                                <td>Kolaborasi</td>
+                                <td><small class="text-muted">"Terima kasih sudah membantu debugging!"</small></td>
+                                <td class="text-end pe-4"><span class="badge bg-light text-dark border">Publik</span></td>
+                            </tr>
+                            <tr>
+                                <td class="ps-4 small">27 Mei 2026, 09:15</td>
+                                <td><span class="badge bg-danger-subtle text-danger rounded-pill">Bata</span></td>
+                                <td><div class="fw-bold">Anonim</div><small class="text-muted">HR</small></td>
+                                <td>Kepatuhan</td>
+                                <td><small class="text-muted">"Melaporkan pelanggaran jam kerja..."</small></td>
+                                <td class="text-end pe-4"><span class="badge bg-warning-subtle text-warning border">Ditinjau</span></td>
+                            </tr>
+                            <tr>
+                                <td class="ps-4 small">26 Mei 2026, 16:45</td>
+                                <td><span class="badge bg-success-subtle text-success rounded-pill">Cendol</span></td>
+                                <td><div class="fw-bold">Tim IT</div><small class="text-muted">IT</small></td>
+                                <td>Integritas</td>
+                                <td><small class="text-muted">"Respon server cepat hari ini!"</small></td>
+                                <td class="text-end pe-4"><span class="badge bg-light text-dark border">Publik</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/components.js"></script>
+</body>
+</html>

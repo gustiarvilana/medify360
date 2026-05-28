@@ -1,58 +1,306 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# 🧵 Stitch 360 — Platform Budaya Perusahaan
 
-## About Laravel
+> **CendolBata** — Apresiasi, Transparansi, Integritas.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Stitch 360 adalah platform manajemen budaya perusahaan berbasis web yang memungkinkan karyawan saling memberi apresiasi (**Cendol**), melaporkan insiden (**Bata**/Whistleblow), dan melakukan **Penilaian 360°** secara berkala.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Dibangun dengan **Laravel 13**, **Bootstrap 5.3**, **Yajra DataTables**, dan **DomPDF**.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## ✨ Fitur Utama
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 🟢 Cendol (Apresiasi)
+- Kirim apresiasi ke rekan kerja (Kolaborasi, Integritas, Inovasi)
+- Riwayat Cendol diterima & dikirim
+- Leaderboard peringkat apresiasi
+- Notifikasi real-time via bell icon + sound
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 🔴 Bata (Whistleblow)
+- Laporkan insiden / pelanggaran (Kekerasan, Pelecehan, Penipuan, dll.)
+- Pilih karyawan yang dilaporkan (opsional)
+- Laporkan secara anonim
+- Batas kuota per bulan sesuai peran (Karyawan=5, Manajer=10, Admin=∞)
+- Admin meninjau & mengubah status (Menunggu → Ditinjau → Selesai/Ditolak)
+- Notifikasi status berubah
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### 🎯 Penilaian 360°
+- **Dimensi Penilaian:** Kepemimpinan, Kerjasama, Komunikasi, Inisiatif, Kualitas Kerja
+- **Bobot Relasi:** Setiap pasangan peran (penilai → dinilai) punya bobot berbeda
+- **Target Otomatis:** Target penilaian dibuat otomatis berdasarkan aturan peran
+- **Star Rating:** Input skor 1–5 per dimensi dengan label (Sangat Kurang – Sangat Baik)
+- **Skor Akhir:** Rata-rata dimensi × bobot relasi
+- **Dashboard 360:** Statistik per departemen, progress bar
+- **Laporan:** Semua penilaian / per individu + **Download PDF** dengan rincian dimensi, bobot, dan perhitungan skor
 
-## Agentic Development
+### 👥 Manajemen User (Admin)
+- CRUD karyawan dengan username, foto profil, departemen, peran
+- DataTables server-side dengan search, sort, pagination
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+### 📊 Dashboard
+- Statistik: Cendol diterima/dikirim, Bata, Skor Budaya
+- Progress Penilaian 360 (widget)
+- Notifikasi bell icon dengan polling 15 detik
 
-```bash
-composer require laravel/boost --dev
+### 🔧 Pengaturan
+- Edit profil (nama, username, email)
+- Upload foto profil (crop preview)
+- Ganti password (toggle visibility)
+- Toggle notifikasi Cendol / Bata
 
-php artisan boost:install
+---
+
+## 🏗️ Arsitektur
+
+### Pola Desain: Repository Pattern
+
+```
+Interface (Contract)          → App\Repositories\Contracts\
+Eloquent Implementation       → App\Repositories\Eloquent\
+Binding                       → App\Providers\AppServiceProvider
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### Struktur Direktori
 
-## Contributing
+```
+├── .agents/                  # Dokumentasi pengembangan (PRD, design, tasklist)
+├── app/
+│   ├── Http/Controllers/     # 12 Controllers
+│   ├── Models/               # 13 Eloquent Models
+│   ├── Notifications/        # CendolReceived, BataStatusUpdated
+│   ├── Repositories/
+│   │   ├── Contracts/        # Interface repository
+│   │   └── Eloquent/         # Implementasi Eloquent
+│   └── Providers/
+├── database/
+│   ├── factories/
+│   ├── migrations/           # 19 migration files
+│   └── seeders/              # DepartemenSeeder, PeranSeeder, Penilaian360Seeder, DataPenilaianSeeder
+├── mockup/                   # Prototipe desain HTML/CSS/JS
+├── resources/
+│   ├── css/                  # app.css (Bootstrap import + kustom)
+│   ├── js/                   # app.js (Bootstrap + Vite ESM)
+│   └── views/                # Blade templates
+│       ├── layouts/          # app.blade.php, sidebar.blade.php
+│       ├── auth/             # Login, Register
+│       ├── penilaian-360/    # 10 view files
+│       ├── master-data/      # Jabatan, Departemen
+│       └── *.blade.php       # Dashboard, Laporan, dll.
+├── routes/
+│   └── web.php               # Semua route (auth + verified)
+├── storage/
+│   ├── app/data/             # Data JSON (prototyping)
+│   └── app/public/foto-profil/
+└── tests/                    # PHPUnit (Unit + Feature)
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Controllers
 
-## Code of Conduct
+| Controller | Route Prefix | Fungsi |
+|---|---|---|
+| `DashboardController` | `/dashboard` | Statistik utama + widget 360 |
+| `CendolController` | `/cendol/kirim` | Kirim apresiasi |
+| `LaporanController` | `/laporan` | CRUD laporan insiden (Bata) |
+| `Laporan360Controller` | `/laporan-360` | Laporan penilaian 360 + PDF |
+| `Penilaian360Controller` | `/penilaian-360` | CRUD penilaian 360, target, bobot, dimensi |
+| `Dashboard360Controller` | `/dashboard-360` | Statistik penilaian per departemen |
+| `WhistleblowController` | `/whistleblow` | Halaman whistleblow dedicated |
+| `AdminController` | `/admin` | Manajemen user, kelola laporan |
+| `MasterDataController` | `/admin/master` | CRUD jabatan & departemen |
+| `PengaturanController` | `/pengaturan` | Profil, foto, password, notifikasi |
+| `NotifikasiController` | `/notifikasi` | Bell icon, mark read, preferensi |
+| `RiwayatController` | `/riwayat` | Riwayat Cendol + Bata |
+| `LeaderboardController` | `/leaderboard` | Peringkat apresiasi |
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Eloquent Models
 
-## Security Vulnerabilities
+| Model | Table | Relasi Utama |
+|---|---|---|
+| `User` | `users` | `departemen`, `peran`, `penilaianDiterima`, `cendolDiterima`, `laporanInsiden` |
+| `Departemen` | `departemen` | `users` |
+| `Peran` | `peran` | `users`, `batas_whistleblow` |
+| `TransaksiCendol` | `transaksi_cendol` | `pengirim`, `penerima` |
+| `LaporanInsiden` | `laporan_insiden` | `pelapor`, `penerima` |
+| `Penilaian360` | `penilaian_360` | `penilai`, `dinilai`, `skor` |
+| `SkorPenilaian` | `skor_penilaian` | `penilaian`, `dimensi` |
+| `TargetPenilaian` | `target_penilaian` | `penilai`, `dinilai` |
+| `BobotRelasi` | `bobot_relasi` | `peranPenilai`, `peranDinilai` |
+| `DimensiPenilaian` | `dimensi_penilaian` | `skorPenilaian` |
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 💻 Tech Stack
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+| Teknologi | Versi |
+|---|---|
+| **PHP** | ^8.3 |
+| **Laravel** | ^13.8 |
+| **Bootstrap** | 5.3 (npm import) |
+| **Yajra DataTables** | ^13.1 (server-side) |
+| **DomPDF** | ^3.1 (barryvdh/laravel-dompdf) |
+| **Select2** | CDN (global, auto-init on `.form-select`) |
+| **Chart.js** | CDN (dashboard) |
+| **MySQL** | Production database |
+| **Vite** | Asset bundler |
+| **Laravel Breeze** | Blade stack auth |
+| **PHPUnit** | Testing |
+
+---
+
+## ⚙️ Setup & Instalasi
+
+### Prasyarat
+- PHP ^8.3
+- Composer
+- Node.js & npm
+- MySQL
+
+### Instalasi Cepat
+
+```bash
+composer setup
+```
+
+Atau manual:
+
+```bash
+cp .env.example .env
+# Edit .env — atur database MySQL
+php artisan key:generate
+php artisan migrate --seed
+npm install && npm run build
+```
+
+### Environment Variables (.env)
+
+```env
+APP_NAME=Stitch 360
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+### Test Database (.env.testing)
+
+```env
+DB_CONNECTION=mysql
+DB_DATABASE=laravel_testing
+```
+
+---
+
+## 🚀 Development
+
+### Menjalankan Server
+
+```bash
+composer dev
+```
+
+Menjalankan 4 proses concurrently:
+- `php artisan serve` (http://localhost:8000)
+- `php artisan queue:listen` (notifikasi queue)
+- `php artisan pail` (log viewer)
+- `npm run dev` (Vite HMR)
+
+### Build Asset
+
+```bash
+npm run build
+```
+
+### Menjalankan Tests
+
+```bash
+composer test
+# atau
+php artisan test --filter=NamaTest
+```
+
+---
+
+## 🎨 Sistem Desain
+
+### Warna Semantik
+
+| Warna | Makna | Bootstrap |
+|---|---|---|
+| Hijau `#198754` | **Cendol** — Apresiasi, sukses | `.btn-success` |
+| Merah `#dc3545` | **Bata** — Insiden, danger | `.btn-danger` |
+| Biru `#0d6efd` | Primary / aksi utama | `.btn-primary` |
+| Abu `#f0f2f5` | Background halaman | — |
+
+### Komponen Kustom
+
+- **`.stat-card`** — Kartu statistik dengan shadow + hover lift
+- **`.feed-card`** — Kartu daftar aktivitas
+- **`.btn-action`** — Tombol aksi dengan transisi scale
+- **`.icon-box`** — Wrapper ikon 48×48px
+
+---
+
+## 🗄️ Database
+
+### ER Diagram (Ringkas)
+
+```
+departemen ──< users >── peran
+                │
+      ┌─────────┼─────────┐
+      │         │         │
+  transaksi_  laporan_  penilaian_360
+  cendol      insiden      │
+                           └── skor_penilaian >── dimensi_penilaian
+                      
+target_penilaian
+bobot_relasi >── peran (penilai & dinilai)
+```
+
+### Aturan Target Penilaian
+
+| Peran Penilai | Bisa Menilai |
+|---|---|
+| Admin (id=3) | Semua user di departemen yang sama |
+| Manajer (id=2) | Karyawan (id=1) di departemen yang sama |
+| Karyawan (id=1) | Karyawan lain (id=1) di departemen yang sama |
+
+---
+
+## 📊 Seeder Data
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+Membuat:
+- **5 Departemen:** TI, SDM, Keuangan, Operasional, Pemasaran
+- **3 Peran:** Karyawan (batas=5), Manajer (batas=10), Admin (batas=∞)
+- **21 User** — Admin + Manajer + 3 Karyawan per departemen
+- **5 Dimensi Penilaian** — Kepemimpinan, Kerjasama, Komunikasi, Inisiatif, Kualitas Kerja
+- **9 Bobot Relasi** — Semua kombinasi peran
+- **25 Penilaian 360** — Realistis, tersebar di semua departemen
+- **25 Cendol** + **10 Laporan Insiden**
+
+### Akun Default (`password` untuk semua)
+
+| Email | Nama | Peran | Departemen |
+|---|---|---|---|
+| admin@stitch360.com | Admin TI | Admin | TI |
+| budi@stitch360.com | Budi Santoso | Manajer | TI |
+| citra@stitch360.com | Citra Dewi | Karyawan | TI |
+| dimas@stitch360.com | Dimas Ardiansyah | Karyawan | TI |
+| bambang@stitch360.com | Bambang Sutejo | Manajer | SDM |
+| dedi@stitch360.com | Dedi Kusnandar | Karyawan | SDM |
+| hendra@stitch360.com | Hendra Gunawan | Manajer | Keuangan |
+| putri@stitch360.com | Putri Wulandari | Manajer | Pemasaran |
+| (dan 12 user lainnya) | | | |
+
+---
+
+## 📄 Lisensi
+
+MIT License — lihat file `LICENSE` untuk detail.
