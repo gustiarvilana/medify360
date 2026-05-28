@@ -1,15 +1,10 @@
 *.log
-.GEMINI.md
 .DS_Store
 .env
 .env.backup
 .env.production
 .phpactor.json
 .phpunit.result.cache
-/.agents
-/.agents/*
-/mockup
-/mockup/*
 /.codex
 /.cursor/
 /.idea
