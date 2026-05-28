@@ -1,0 +1,55 @@
+# User Seeder — Medify 360
+
+Jalankan: `php artisan migrate:fresh --seed`
+
+Semua user memiliki password: `password`
+
+## Daftar User
+
+| Name | Email | Departemen (id) | Peran (id) |
+|---|---|---|---|
+| Admin TI | admin@medify360.com | Teknologi Informasi (1) | Admin (3) |
+| Budi Santoso | budi@medify360.com | Teknologi Informasi (1) | Manajer (2) |
+| Citra Dewi | citra@medify360.com | Teknologi Informasi (1) | Karyawan (1) |
+| Dimas Ardiansyah | dimas@medify360.com | Teknologi Informasi (1) | Karyawan (1) |
+| Fitria Hasanah | fitria@medify360.com | Teknologi Informasi (1) | Karyawan (1) |
+| Bambang Sutejo | bambang@medify360.com | Sumber Daya Manusia (2) | Manajer (2) |
+| Dedi Kusnandar | dedi@medify360.com | Sumber Daya Manusia (2) | Karyawan (1) |
+| Eka Putri | eka@medify360.com | Sumber Daya Manusia (2) | Karyawan (1) |
+| Gilang Pratama | gilang@medify360.com | Sumber Daya Manusia (2) | Karyawan (1) |
+| Hendra Gunawan | hendra@medify360.com | Keuangan (3) | Manajer (2) |
+| Indah Lestari | indah@medify360.com | Keuangan (3) | Karyawan (1) |
+| Joko Susilo | joko@medify360.com | Keuangan (3) | Karyawan (1) |
+| Kartika Sari | kartika@medify360.com | Keuangan (3) | Karyawan (1) |
+| Lutfi Hidayat | lutfi@medify360.com | Operasional (4) | Manajer (2) |
+| Maya Anggraini | maya@medify360.com | Operasional (4) | Karyawan (1) |
+| Nanda Pratama | nanda@medify360.com | Operasional (4) | Karyawan (1) |
+| Oscar Wirawan | oscar@medify360.com | Operasional (4) | Karyawan (1) |
+| Putri Wulandari | putri@medify360.com | Pemasaran (5) | Manajer (2) |
+| Rian Putra | rian@medify360.com | Pemasaran (5) | Karyawan (1) |
+| Siska Putri | siska@medify360.com | Pemasaran (5) | Karyawan (1) |
+| Ani Wijaya | ani@medify360.com | Pemasaran (5) | Karyawan (1) |
+
+## Peran
+
+| id | nama | batas_whistleblow |
+|---|---|---|
+| 1 | Karyawan | 5 |
+| 2 | Manajer | 10 |
+| 3 | Admin | null (∞) |
+
+## Departemen
+
+| id | nama |
+|---|---|
+| 1 | Teknologi Informasi |
+| 2 | Sumber Daya Manusia |
+| 3 | Keuangan |
+| 4 | Operasional |
+| 5 | Pemasaran |
+
+## Seed Data Tambahan
+
+- 25 TransaksiCendol (factory)
+- 10 LaporanInsiden (factory)
+- 25 Penilaian 360 + skor (Penilaian360Seeder + DataPenilaianSeeder)

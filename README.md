@@ -289,14 +289,14 @@ Membuat:
 
 | Email | Nama | Peran | Departemen |
 |---|---|---|---|
-| admin@stitch360.com | Admin TI | Admin | TI |
-| budi@stitch360.com | Budi Santoso | Manajer | TI |
-| citra@stitch360.com | Citra Dewi | Karyawan | TI |
-| dimas@stitch360.com | Dimas Ardiansyah | Karyawan | TI |
-| bambang@stitch360.com | Bambang Sutejo | Manajer | SDM |
-| dedi@stitch360.com | Dedi Kusnandar | Karyawan | SDM |
-| hendra@stitch360.com | Hendra Gunawan | Manajer | Keuangan |
-| putri@stitch360.com | Putri Wulandari | Manajer | Pemasaran |
+| admin@medify360.com | Admin TI | Admin | TI |
+| budi@medify360.com | Budi Santoso | Manajer | TI |
+| citra@medify360.com | Citra Dewi | Karyawan | TI |
+| dimas@medify360.com | Dimas Ardiansyah | Karyawan | TI |
+| bambang@medify360.com | Bambang Sutejo | Manajer | SDM |
+| dedi@medify360.com | Dedi Kusnandar | Karyawan | SDM |
+| hendra@medify360.com | Hendra Gunawan | Manajer | Keuangan |
+| putri@medify360.com | Putri Wulandari | Manajer | Pemasaran |
 | (dan 12 user lainnya) | | | |
 
 ---

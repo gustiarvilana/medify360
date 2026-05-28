@@ -18,8 +18,8 @@ class DataPenilaianSeeder extends Seeder
         $tgl = Carbon::now()->subDays(rand(1, 30));
 
         // --- TI: Budi (Manajer) nilai staff ---
-        $budi = User::where('email', 'budi@stitch360.com')->first();
-        $staffTi = User::whereIn('email', ['citra@stitch360.com', 'dimas@stitch360.com', 'fitria@stitch360.com'])->get();
+        $budi = User::where('email', 'budi@medify360.com')->first();
+        $staffTi = User::whereIn('email', ['citra@medify360.com', 'dimas@medify360.com', 'fitria@medify360.com'])->get();
 
         foreach ($staffTi as $staff) {
             $this->buatPenilaian($budi, $staff, $dimensi, $tgl, 'Baik, terus pertahankan.');
@@ -27,9 +27,9 @@ class DataPenilaianSeeder extends Seeder
         }
 
         // --- TI: Staff nilai staff ---
-        $citra = User::where('email', 'citra@stitch360.com')->first();
-        $dimas = User::where('email', 'dimas@stitch360.com')->first();
-        $fitria = User::where('email', 'fitria@stitch360.com')->first();
+        $citra = User::where('email', 'citra@medify360.com')->first();
+        $dimas = User::where('email', 'dimas@medify360.com')->first();
+        $fitria = User::where('email', 'fitria@medify360.com')->first();
 
         $this->buatPenilaian($citra, $dimas, $dimensi, $tgl, 'Kompak dalam kerja tim.');
         $tgl = $tgl->addDay();
@@ -45,8 +45,8 @@ class DataPenilaianSeeder extends Seeder
         $tgl = $tgl->addDay();
 
         // --- SDM: Bambang (Manajer) nilai staff ---
-        $bambang = User::where('email', 'bambang@stitch360.com')->first();
-        $staffSdm = User::whereIn('email', ['dedi@stitch360.com', 'eka@stitch360.com', 'gilang@stitch360.com'])->get();
+        $bambang = User::where('email', 'bambang@medify360.com')->first();
+        $staffSdm = User::whereIn('email', ['dedi@medify360.com', 'eka@medify360.com', 'gilang@medify360.com'])->get();
 
         foreach ($staffSdm as $staff) {
             $this->buatPenilaian($bambang, $staff, $dimensi, $tgl, 'Sudah menunjukkan perkembangan.');
@@ -54,9 +54,9 @@ class DataPenilaianSeeder extends Seeder
         }
 
         // --- SDM: Staff nilai staff ---
-        $dedi = User::where('email', 'dedi@stitch360.com')->first();
-        $eka = User::where('email', 'eka@stitch360.com')->first();
-        $gilang = User::where('email', 'gilang@stitch360.com')->first();
+        $dedi = User::where('email', 'dedi@medify360.com')->first();
+        $eka = User::where('email', 'eka@medify360.com')->first();
+        $gilang = User::where('email', 'gilang@medify360.com')->first();
 
         $this->buatPenilaian($dedi, $eka, $dimensi, $tgl, 'Teliti dan bertanggung jawab.');
         $tgl = $tgl->addDay();
@@ -68,8 +68,8 @@ class DataPenilaianSeeder extends Seeder
         $tgl = $tgl->addDay();
 
         // --- Keuangan: Hendra nilai staff ---
-        $hendra = User::where('email', 'hendra@stitch360.com')->first();
-        $staffKeu = User::whereIn('email', ['indah@stitch360.com', 'joko@stitch360.com', 'kartika@stitch360.com'])->get();
+        $hendra = User::where('email', 'hendra@medify360.com')->first();
+        $staffKeu = User::whereIn('email', ['indah@medify360.com', 'joko@medify360.com', 'kartika@medify360.com'])->get();
 
         foreach ($staffKeu as $staff) {
             $this->buatPenilaian($hendra, $staff, $dimensi, $tgl, 'Akurat dan tepat waktu.');
@@ -77,25 +77,25 @@ class DataPenilaianSeeder extends Seeder
         }
 
         // --- Keuangan: Staff nilai staff ---
-        $indah = User::where('email', 'indah@stitch360.com')->first();
-        $joko = User::where('email', 'joko@stitch360.com')->first();
+        $indah = User::where('email', 'indah@medify360.com')->first();
+        $joko = User::where('email', 'joko@medify360.com')->first();
         $this->buatPenilaian($indah, $joko, $dimensi, $tgl, 'Solid dalam tim.');
         $tgl = $tgl->addDay();
         $this->buatPenilaian($joko, $indah, $dimensi, $tgl, 'Rapi dan sistematis.');
         $tgl = $tgl->addDay();
 
         // --- Operasional: Lutfi nilai staff ---
-        $lutfi = User::where('email', 'lutfi@stitch360.com')->first();
-        $this->buatPenilaian($lutfi, User::where('email', 'maya@stitch360.com')->first(), $dimensi, $tgl, 'Sigap di lapangan.');
+        $lutfi = User::where('email', 'lutfi@medify360.com')->first();
+        $this->buatPenilaian($lutfi, User::where('email', 'maya@medify360.com')->first(), $dimensi, $tgl, 'Sigap di lapangan.');
         $tgl = $tgl->addDay();
-        $this->buatPenilaian($lutfi, User::where('email', 'nanda@stitch360.com')->first(), $dimensi, $tgl, 'Disiplin dan teratur.');
+        $this->buatPenilaian($lutfi, User::where('email', 'nanda@medify360.com')->first(), $dimensi, $tgl, 'Disiplin dan teratur.');
         $tgl = $tgl->addDay();
         // Oscar belum dinilai — biar ada variasi
 
         // --- Pemasaran: Staff nilai staff ---
-        $rian = User::where('email', 'rian@stitch360.com')->first();
-        $siska = User::where('email', 'siska@stitch360.com')->first();
-        $ani = User::where('email', 'ani@stitch360.com')->first();
+        $rian = User::where('email', 'rian@medify360.com')->first();
+        $siska = User::where('email', 'siska@medify360.com')->first();
+        $ani = User::where('email', 'ani@medify360.com')->first();
         $this->buatPenilaian($rian, $siska, $dimensi, $tgl, 'Kreatif dan inovatif.');
         $tgl = $tgl->addDay();
         $this->buatPenilaian($siska, $ani, $dimensi, $tgl, 'Komunikasi pemasaran bagus.');
